@@ -182,6 +182,18 @@ ngx_feature_test="if (prctl(PR_SET_DUMPABLE, 1, 0, 0, 0) == -1) return 1"
 . auto/feature
 
 
+# prctl(PR_SET_PDEATHSIG)
+
+ngx_feature="prctl(PR_SET_PDEATHSIG)"
+ngx_feature_name="NGX_HAVE_PR_SET_PDEATHSIG"
+ngx_feature_run=yes
+ngx_feature_incs="#include <sys/prctl.h>"
+ngx_feature_path=
+ngx_feature_libs=
+ngx_feature_test="if (prctl(PR_SET_PDEATHSIG, 1, 0, 0, 0) == -1) return 1"
+. auto/feature
+
+
 # prctl(PR_SET_KEEPCAPS)
 
 ngx_feature="prctl(PR_SET_KEEPCAPS)"

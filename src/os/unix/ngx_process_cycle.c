@@ -869,6 +869,15 @@ ngx_worker_process_init(ngx_cycle_t *cycle, ngx_int_t worker)
 
 #endif
 
+#if (NGX_HAVE_PR_SET_PDEATHSIG)
+    if (ccf->workers_die_with_master) {
+        if (prctl(PR_SET_PDEATHSIG, SIGTERM, 0, 0, 0) == -1) {
+            ngx_log_error(NGX_LOG_ALERT, cycle->log, ngx_errno,
+                          "prctl(PR_SET_PDEATHSIG, SIGTERM) failed");
+        }
+    }
+#endif
+
     if (ccf->working_directory.len) {
         if (chdir((char *) ccf->working_directory.data) == -1) {
             ngx_log_error(NGX_LOG_ALERT, cycle->log, ngx_errno,

@@ -169,6 +169,7 @@ typedef struct {
 
 
 
+char *ngx_conf_unsupported(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
 char * ngx_conf_deprecated(ngx_conf_t *cf, void *post, void *data);
 char *ngx_conf_check_num_bounds(ngx_conf_t *cf, void *post, void *data);
 
